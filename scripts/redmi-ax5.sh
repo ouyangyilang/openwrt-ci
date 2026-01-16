@@ -9,3 +9,6 @@ git clone https://github.com/xiaorouji/openwrt-passwall-packages package/passwal
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall2 package/passwall/passwall-luci
 git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
+git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/openwrt-stuntman.git package/stuntman
+git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/openwrt-natmapt.git package/natmapt
+git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-natmapt.git package/luci-app-natmapt
