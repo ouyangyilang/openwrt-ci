@@ -10,7 +10,7 @@ env:
   REPO_BRANCH: main-nss
   CONFIG_FILE: configs/xiaomi-ax3600.config
   DIY_SCRIPT: scripts/xiaomi-ax3600.sh
-  # CLASH_KERNEL: amd64
+  CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
@@ -67,6 +67,8 @@ jobs:
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
+        VERSION_KERNEL=$(grep -oP 'LINUX_KERNEL_HASH-\K[0-9]+\.[0-9]+\.[0-9]+' target/linux/generic/kernel-6.12)
+        echo "VERSION_KERNEL=$VERSION_KERNEL" >> $GITHUB_ENV
 
     - name: Generate Variables(生成变量)
       run: |
@@ -94,16 +96,12 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
-        # git clone --depth 1 https://github.com/sbwml/openwrt_pkgs.git package/new/custom
-        # mv package/new/custom/luci-app-netspeedtest  package/new
-        # mv package/new/custom/speedtest-cli package/new
-        # rm -rf package/new/custom
         ./scripts/feeds install -a
   
     - name: Load Custom Configuration(加载自定义配置)
       run: |
-        # [ -e files ] && mv files $OPENWRT_PATH/files
-        # [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
+        [ -e files ] && mv files $OPENWRT_PATH/files
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
         cp $OPENWRT_PATH/nss-setup/config-nss.seed $OPENWRT_PATH/.config
         cat $CONFIG_FILE >> $OPENWRT_PATH/.config
         chmod +x $DIY_SCRIPT
@@ -169,8 +167,8 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
-          ### 📒 固件信息(WIFI)
-          - 带WIFI带有线NSS的6.12内核固件
+          ### 📒 固件信息(无WIFI)
+          - 无WIFI带有线NSS的6.12内核固件
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
