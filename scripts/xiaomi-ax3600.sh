@@ -20,6 +20,6 @@ rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2sock
 git clone https://github.com/xiaorouji/openwrt-passwall-packages package/passwall/passwall-packages
 # 移除 openwrt feeds 过时的luci版本
 rm -rf feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall2 package/passwall/passwall-luci
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall2 package/passwall/passwall-luci
 sed -i 's/--set=llvm.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
 git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
