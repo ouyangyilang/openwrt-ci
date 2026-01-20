@@ -23,3 +23,7 @@ rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall2 package/passwall/passwall-luci
 sed -i 's/--set=llvm.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
 git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
+sed -i \
+  -e 's/^GO_VERSION_PATCH:=.*/GO_VERSION_PATCH:=6/' \
+  -e 's/^PKG_HASH:=.*/PKG_HASH:=58cbf771e44d76de6f56d19e33b77d745a1e489340922875e46585b975c2b059/' \
+  feeds/packages/lang/golang/golang/Makefile
