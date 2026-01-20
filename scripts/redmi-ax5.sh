@@ -12,3 +12,7 @@ git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
 git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/openwrt-stuntman.git package/stuntman
 git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/openwrt-natmapt.git package/natmapt
 git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-natmapt.git package/luci-app-natmapt
+sed -i \
+  -e 's/^GO_VERSION_PATCH:=.*/GO_VERSION_PATCH:=6/' \
+  -e 's/^PKG_HASH:=.*/PKG_HASH:=58cbf771e44d76de6f56d19e33b77d745a1e489340922875e46585b975c2b059/' \
+  feeds/packages/lang/golang/golang/Makefile
