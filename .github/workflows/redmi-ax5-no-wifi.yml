@@ -9,7 +9,7 @@ env:
   REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
   REPO_BRANCH: main-nss
   CONFIG_FILE: configs/redmi-ax5-no-wifi.config
-  DIY_SCRIPT: scripts/redmi-ax5.sh
+  DIY_SCRIPT: scripts/libwrt.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
