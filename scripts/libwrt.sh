@@ -3,8 +3,10 @@ rm -rf package/emortal/luci-app-athena-led
 git clone --depth=1 https://github.com/NONGFAH/luci-app-athena-led package/luci-app-athena-led
 chmod +x package/luci-app-athena-led/root/etc/init.d/athena_led package/luci-app-athena-led/root/usr/sbin/athena-led
 #修改基础信息
-sed -i -e "s/set system\.@system\[-1\]\.hostname='LibWrt'/set system.@system[-1].hostname='Oyyl_Router'/" package/base-files/files/bin/config_generate
 sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
+sed -i -e "s/set system\.@system\[-1\]\.hostname='LibWrt'/set system.@system[-1].hostname='Oyyl_Router'/" package/base-files/files/bin/config_generate
+sed -i -e "/add_list system.ntp.server='ntp.ntsc.ac.cn'/d" package/base-files/files/bin/config_generate
+sed -i -e "/add_list system.ntp.server='cn.ntp.org.cn'/d" package/base-files/files/bin/config_generate
 sed -i 's/^root:::0:99999:7:::/#&/' package/base-files/files/etc/shadow
 sed -i '/^#root:::0:99999:7:::/a\root:$5$xmxpvLvUA0puov/Q$8VyXs7lx90md2yVksUedqKP5JyCQzpU7wY8JyqQv9e/:20389:0:99999:7:::' package/base-files/files/etc/shadow
 # 移除 openwrt feeds 自带的核心库
