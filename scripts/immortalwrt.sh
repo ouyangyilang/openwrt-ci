@@ -3,6 +3,8 @@ sed -i 's/192.168.1.1/192.168.9.1/g' package/base-files/files/bin/config_generat
 sed -i -e "s/set system\.@system\[-1\]\.hostname='ImmortalWrt'/set system.@system[-1].hostname='Oyyl_Router'/" package/base-files/files/bin/config_generate
 sed -i -e "s/timezone='GMT0'/timezone='CST-8'/" package/base-files/files/bin/config_generate
 sed -i -e "s/zonename='UTC'/zonename='Asia\/Shanghai'/" package/base-files/files/bin/config_generate
+sed -i -e "s/system\.ntp\.server='time\.apple\.com'/system.ntp.server='ntp.tencent.com'/g" package/base-files/files/bin/config_generate
+sed -i -e "s/system\.ntp\.server='time1\.google\.com'/system.ntp.server='ntp.aliyun.com'/g" package/base-files/files/bin/config_generate
 sed -i -e "/add_list system.ntp.server='time.cloudflare.com'/d" package/base-files/files/bin/config_generate
 sed -i -e "/add_list system.ntp.server='pool.ntp.org'/d" package/base-files/files/bin/config_generate
 sed -i 's/^root:::0:99999:7:::/#&/' package/base-files/files/etc/shadow
