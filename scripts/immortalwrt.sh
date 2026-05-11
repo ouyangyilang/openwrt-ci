@@ -17,5 +17,17 @@ rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall2 package/passwall/passwall-luci
 git clone --depth=1 https://github.com/laipeng668/luci-app-gecoosac package/openwrt-gecoosac
 git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/openwrt-stuntman.git package/stuntman
+pushd package/stuntman
+umask 022
+git checkout
+popd
 git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/openwrt-natmapt.git package/natmapt
+pushd package/natmapt
+umask 022
+git checkout
+popd
 git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-natmapt.git package/luci-app-natmapt
+pushd package/luci-app-natmapt
+umask 022
+git checkout
+popd
