@@ -9,13 +9,15 @@ sed -i -e "/add_list system.ntp.server='time.cloudflare.com'/d" package/base-fil
 sed -i -e "/add_list system.ntp.server='pool.ntp.org'/d" package/base-files/files/bin/config_generate
 sed -i 's/^root:::0:99999:7:::/#&/' package/base-files/files/etc/shadow
 sed -i '/^#root:::0:99999:7:::/a\root:$5$xmxpvLvUA0puov/Q$8VyXs7lx90md2yVksUedqKP5JyCQzpU7wY8JyqQv9e/:20389:0:99999:7:::' package/base-files/files/etc/shadow
-# 移除 openwrt feeds 自带的核心库
+# Passwall移除 openwrt feeds 自带的核心库
 rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/passwall/passwall-packages
-# 移除 openwrt feeds 过时的luci版本
+# Passwall移除 openwrt feeds 过时的luci版本
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall2 package/passwall/passwall-luci
+# 集客
 git clone --depth=1 https://github.com/laipeng668/luci-app-gecoosac package/openwrt-gecoosac
+# natmapt
 git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/openwrt-stuntman.git package/stuntman
 pushd package/stuntman
 umask 022
@@ -31,3 +33,5 @@ pushd package/luci-app-natmapt
 umask 022
 git checkout
 popd
+# rtl8852be蓝牙
+git clone https://github.com/ouyangyilang/rtl8852be-bt-firmware.git package/rtl8852be-bt-firmware
