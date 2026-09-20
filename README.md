@@ -7,7 +7,6 @@
 - **本固件禁止用于任何商业用途，请务必严格遵守国家互联网使用相关法律规定！**
 
 ## 项目说明 [![](https://s3.oyyl.link/2026/02/bff8d964bba47327035f61f391ea614d.svg)](#项目说明-)
-- 固件默认管理地址：`192.168.1.1` 默认用户：`root` 默认密码：`password`
 - 源码：[LiBwrt](https://github.com/LiBwrt-op/openwrt-6.x)
 - 源码：[immortalwrt](https://github.com/immortalwrt/immortalwrt)
 - 云编译来源：https://github.com/haiibo/OpenWrt
