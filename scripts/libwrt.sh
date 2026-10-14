@@ -15,7 +15,9 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/
 # 移除 openwrt feeds 过时的luci版本
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall2 package/passwall/passwall-luci
+# 集客
 git clone --depth=1 https://github.com/laipeng668/luci-app-gecoosac package/openwrt-gecoosac
+# natmapt
 git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/openwrt-stuntman.git package/stuntman
 pushd package/stuntman
 umask 022
